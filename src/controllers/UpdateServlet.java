@@ -51,7 +51,7 @@ public class UpdateServlet extends HttpServlet {
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             m.setUpdated_at(currentTime);       // 更新日時のみ上書き
-            
+
             // バリデーションを実行してエラーがあったら編集画面のフォームに戻る
             List<String> errors = MessageValidator.validate(m);
             if(errors.size() > 0) {
@@ -77,18 +77,18 @@ public class UpdateServlet extends HttpServlet {
                 // indexページへリダイレクト
                 response.sendRedirect(request.getContextPath() + "/index");
             }
-            
+
             // データベースを更新
-            em.getTransaction().begin();
-            em.getTransaction().commit();
-            request.getSession().setAttribute("flush", "更新が完了しました。");       // ここを追記
-            em.close();
+//            em.getTransaction().begin();
+//            em.getTransaction().commit();
+//            request.getSession().setAttribute("flush", "更新が完了しました。");       // ここを追記
+//            em.close();
 
             // セッションスコープ上の不要になったデータを削除
-            request.getSession().removeAttribute("message_id");
-
-            // indexページへリダイレクト
-            response.sendRedirect(request.getContextPath() + "/index");
+//            request.getSession().removeAttribute("message_id");
+//
+//            // indexページへリダイレクト
+//            response.sendRedirect(request.getContextPath() + "/index");
         }
     }
 }
